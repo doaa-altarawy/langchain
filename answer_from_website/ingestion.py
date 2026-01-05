@@ -1,7 +1,8 @@
 import os
 
 from dotenv import load_dotenv
-from langchain_community.document_loaders import TextLoader
+from langchain_community.document_loaders import WebBaseLoader
+
 from langchain_openai import OpenAIEmbeddings
 from langchain_pinecone import PineconeVectorStore
 from langchain_text_splitters import CharacterTextSplitter
@@ -11,7 +12,7 @@ load_dotenv()
 if __name__ == "__main__":
     print("os.environ:", os.environ['PINECONE_API_KEY'])
     print("Ingesting...")
-    loader = TextLoader("/home/doaa/Git/langchain/mediumblog1.txt")
+    loader = WebBaseLoader("https://en.wikipedia.org/wiki/ThinkPad")
     document = loader.load()
 
 
